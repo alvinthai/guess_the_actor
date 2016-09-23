@@ -12,7 +12,7 @@
 </head>
 
 <body ng-app="app" class="ng-scope">
-  <div ng-controller="mainCtrl" class="container main slim ng-scope" style="height: 335px">
+  <div ng-controller="mainCtrl" class="container main slim ng-scope">
 
     <div mass-autocomplete="ac_container_options" class="ng-isolate-scope">
 
@@ -33,7 +33,9 @@
      <br>
      <br>
      <input type="hidden" name="difficulty" id="hidden" value={{difficulty}}></input>
-     <input type=submit value='Submit'>
+     <input type="hidden" name="y_pos" id="hidden2" value=0></input>
+     <input type="hidden" name="border_height" id="hidden3" value=0></input>
+     <input type=submit value='Submit' id="submit" onclick="submit_position()">
    </form>
 
   <div class="ac-container ng-hide" aria-autocomplete="list" role="listbox" ng-show="show_autocomplete" style="position: absolute; top: 251px; left: 274.5px; width: 269.984px;" aria-labelledby="ac_element_16221492383073022"><ul class="ac-menu"> <!-- ngRepeat: result in results --><!-- ngIf: $index > 0 --><!-- end ngRepeat: result in results --><!-- ngIf: $index > 0 --><li ng-repeat="result in results" ng-if="$index &gt; 0" class="ac-menu-item ng-scope" role="option" id="ac_item_0009400345143852906" ng-class="$index == selected_index ? &#39;ac-state-focus&#39;: &#39;&#39;"></li><!-- end ngIf: $index > 0 --><!-- end ngRepeat: result in results --></ul></div></div>
@@ -58,4 +60,11 @@
           $(".ac-container").css("top", dropform.offset().top + dropform.height());
         })
     });
+</script>
+
+<script>
+    function submit_position() {
+        $("#hidden2").attr("value", $( "#submit" ).offset().top);
+        $("#hidden3").attr("value", $( ".ng-scope" ).height());
+    };
 </script>

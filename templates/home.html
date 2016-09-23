@@ -12,7 +12,7 @@
 </head>
 
 <body ng-app="app" class="ng-scope">
-  <div ng-controller="mainCtrl" class="container main slim ng-scope" style="height: 335px">
+  <div ng-controller="mainCtrl" class="container main slim ng-scope" style="height: 315px">
 
     <div mass-autocomplete="ac_container_options" class="ng-isolate-scope">
 
@@ -44,13 +44,13 @@
 
 <script>
     function unshade_btn() {
-    $(".btn.btn-default").css("background-color","#ffffff");
-    $(".btn.btn-default").css("border-color","#ccc");
-    }
+        $(".btn.btn-default").css("background-color","#ffffff");
+        $(".btn.btn-default").css("border-color","#ccc");
+    };
     function shade(btn, val) {
     unshade_btn();
-    $(btn).css("background-color","#e6e6e6");
-    $(btn).css("border-color","#adadad");
-    $("#hidden").attr("value", val);
+        $(btn).css("background-color","#e6e6e6");
+        $(btn).css("border-color","#adadad");
+        $("#hidden").attr("value", val);
     };
 </script>

@@ -11,8 +11,8 @@
 
 </head>
 
-<body ng-app="app" class="ng-scope">
-  <div ng-controller="mainCtrl" class="container main slim ng-scope" style="height: 335px">
+<body class="ng-scope">
+  <div ng-controller="mainCtrl" class="container main slim ng-scope" style="height: {{border_height}}px">
 
     <div mass-autocomplete="ac_container_options" class="ng-isolate-scope">
 
@@ -30,11 +30,11 @@
 
     <form action="/play" method="post">
         <input type="hidden" name="difficulty" id="hidden" value={{difficulty}}></input>
-        <p><input type=submit value='Play Another Round!' style="position: absolute; top: 289px; width: 152px">
+        <input type=submit value='Play Another Round!' style="position: absolute; top: {{y_pos}}px; width: 152px" id="btn1">
     </form>
 
     <form action="/">
-        <p><input type=submit value='Reset Game' style="position: absolute; top: 314px; width: 152px; text-align: left">
+        <input type=submit value='Reset Game' style="position: absolute; top: {{y_pos}}px; width: 152px" id="btn2">
     </form>
 
     </div>
@@ -46,3 +46,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-sanitize.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+
+<script>
+    $("#btn2").css("left", $( "#btn1" ).offset().left + 168 + "px");
+    window.onresize = function() {
+        $("#btn2").css("left", $( "#btn1" ).offset().left + 168 + "px");
+    };
+</script>
