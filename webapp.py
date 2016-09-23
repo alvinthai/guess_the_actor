@@ -36,8 +36,8 @@ def play():
 
 @app.route('/results', methods=['POST'])
 def results():
-    y_pos = int(request.form['y_pos'])
-    border_height = int(request.form['border_height'])
+    y_pos = request.form['y_pos']
+    border_height = request.form['border_height']
 
     answers = set(imdb.neighbors(session['movie1'])) & \
         set(imdb.neighbors(session['movie2']))
