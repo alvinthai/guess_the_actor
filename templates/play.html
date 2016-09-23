@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-block-transitions{transition:0s all!important;-webkit-transition:0s all!important;}</style>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="https://rawgithub.com/isagalaev/highlight.js/master/src/styles/hybrid.css" rel="stylesheet" >
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="../static/css/index.css" rel="stylesheet">
+  <link href="../static/css/massautocomplete.theme.css" rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width,user-scalable=no">
+  <title>Guess the Actor!</title>
+
+</head>
+
+<body ng-app="app" class="ng-scope">
+  <div ng-controller="mainCtrl" class="container main slim ng-scope" style="height: 335px">
+
+    <div mass-autocomplete="ac_container_options" class="ng-isolate-scope">
+
+    <h3 id="examples" class="ng-scope"> Guess the actor in both these movies!</h3>
+    <br>
+    <form action="/results" method="post" name="inputs" id="form">
+
+      <p><strong>Movie 1:</strong> {{movie1}} </p>
+      <p><strong>Movie 2:</strong> {{movie2}} </p>
+
+      <h4 class="ng-scope"> Enter your guess: </h4>
+      <div class="row ng-scope">
+        <div class="col-sm-4">
+          <input type="text" name="actor_name" class="form-control ng-isolate-scope ng-valid ng-dirty" placeholder="Type in actor name..." ng-model="dirty.fuse_selection" mass-autocomplete-item="ac_fuse_options" autocomplete="off">
+        </div>
+      </div>
+
+     <br>
+     <br>
+     <input type="hidden" name="difficulty" id="hidden" value={{difficulty}}></input>
+     <input type=submit value='Submit'>
+   </form>
+
+  <div class="ac-container ng-hide" aria-autocomplete="list" role="listbox" ng-show="show_autocomplete" style="position: absolute; top: 251px; left: 274.5px; width: 269.984px;" aria-labelledby="ac_element_16221492383073022"><ul class="ac-menu"> <!-- ngRepeat: result in results --><!-- ngIf: $index > 0 --><!-- end ngRepeat: result in results --><!-- ngIf: $index > 0 --><li ng-repeat="result in results" ng-if="$index &gt; 0" class="ac-menu-item ng-scope" role="option" id="ac_item_0009400345143852906" ng-class="$index == selected_index ? &#39;ac-state-focus&#39;: &#39;&#39;"></li><!-- end ngIf: $index > 0 --><!-- end ngRepeat: result in results --></ul></div></div>
+  </div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script src="https://rawgithub.com/krisk/Fuse/master/src/fuse.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-sanitize.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+<!-- APP -->
+<script src="../static/js/massautocomplete.js"></script>
+<script src="../static/js/index.js"></script>
+
+<script>
+  $(function () {
+      var dropform = $( ".col-sm-4" );
+      $('.form-control.ng-isolate-scope.ng-valid.ng-dirty').on('input', function() {
+          $(".ac-container").css("width", dropform.width());
+          $(".ac-container").css("top", dropform.offset().top + dropform.height());
+        })
+    });
+</script>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-block-transitions{transition:0s all!important;-webkit-transition:0s all!important;}</style>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="https://rawgithub.com/isagalaev/highlight.js/master/src/styles/hybrid.css" rel="stylesheet" >
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="../static/css/index.css" rel="stylesheet">
+  <link href="../static/css/massautocomplete.theme.css" rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width,user-scalable=no">
+  <title>Guess the Actor!</title>
+
+</head>
+
+<body ng-app="app" class="ng-scope">
+  <div ng-controller="mainCtrl" class="container main slim ng-scope" style="height: 335px">
+
+    <div mass-autocomplete="ac_container_options" class="ng-isolate-scope">
+
+    <h3 id="examples" class="ng-scope"> {{submission}} is {{result}}!</h3>
+    <br>
+
+    <p>Correct Answers: <strong>{{correct}}/{{total}}</strong></p>
+    <br>
+
+    <details>
+        <summary>Reveal Answer(s)</summary>
+            {{answers_html}}
+    </details>
+    <br>
+
+    <form action="/play" method="post">
+        <input type="hidden" name="difficulty" id="hidden" value={{difficulty}}></input>
+        <p><input type=submit value='Play Another Round!' style="position: absolute; top: 289px; width: 152px">
+    </form>
+
+    <form action="/">
+        <p><input type=submit value='Reset Game' style="position: absolute; top: 314px; width: 152px; text-align: left">
+    </form>
+
+    </div>
+  </div>
+</body>
+
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script src="https://rawgithub.com/krisk/Fuse/master/src/fuse.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-sanitize.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>

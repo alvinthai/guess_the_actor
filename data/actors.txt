@@ -12543,7 +12543,6 @@ Chris Tucci
 Chris Tucker
 Chris Van De Polder
 Chris Vardeman
-Chris Vargas
 Chris Vent
 Chris Vicente
 Chris Violette
@@ -25066,7 +25065,6 @@ Greg Wise
 Greg Wolf
 Greg Wood
 Greg Worswick
-Greg Youmans
 Gregg Aaron Greenberg
 Gregg Allman
 Gregg Almquist

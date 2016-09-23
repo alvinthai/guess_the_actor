@@ -8,7 +8,7 @@
   ```
 3. Go to this address in your web brower:  
   ```
-  127.0.0.1:5000
+  0.0.0.0:8000
   ```
 4. You will be presented with two movies. Guess the actor who is credited in both movies!  
   ![image](images/SampleUI.png)
