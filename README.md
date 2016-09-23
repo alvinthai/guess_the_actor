@@ -1,6 +1,8 @@
 # Guess The Actor!
 
-### Instructions to run
+Website: http://guesstheactor.alvinthai.net/
+
+### Instructions to run on local computer
 1. Clone the repo
 2. Run this command in terminal:  
   ```
