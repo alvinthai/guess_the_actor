@@ -6,6 +6,7 @@ import os
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)   # random cookie
 
+# load imdb and movie pair data
 imdb = nx.read_edgelist('data/imdb_edges_clean.tsv', delimiter='\t')
 movies = np.loadtxt('data/movies_with_difficulty.tsv', dtype=str,
                     delimiter='\t')
@@ -22,23 +23,28 @@ def home():
 
 @app.route('/play', methods=['POST'])
 def play():
+    # remembers user selection for movie difficulty
     session['difficulty'] = int(str(request.form['difficulty']))
 
     session['movie1'], session['movie2'], session['movie_difficulty'] = \
         movies[np.random.randint(length)]
+
     # re-randomize if movie pair is too difficult
     while int(session['movie_difficulty']) > session['difficulty']:
         session['movie1'], session['movie2'], session['movie_difficulty'] = \
             movies[np.random.randint(length)]
+
     return render_template('play.html', difficulty=session['difficulty'],
                            movie1=session['movie1'], movie2=session['movie2'])
 
 
 @app.route('/results', methods=['POST'])
 def results():
+    # for positioning submit button in same position as previous page
     y_pos = request.form['y_pos']
     border_height = request.form['border_height']
 
+    # finds actor(s) common to the presented movie pair
     answers = set(imdb.neighbors(session['movie1'])) & \
         set(imdb.neighbors(session['movie2']))
     good = [ans.lower() for ans in answers]
@@ -47,6 +53,7 @@ def results():
     submission = str(request.form['actor_name'].encode('utf-8'))
     answers_html = ', '.join(answers)
 
+    # checks if user's answer is correct
     if submission.lower() in good:
         session['correct'] += 1
         result = 'correct'
